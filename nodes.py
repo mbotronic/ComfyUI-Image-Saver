@@ -468,6 +468,8 @@ class ImageSaver:
                 os.makedirs(output_path, exist_ok=True)
 
         result_paths: list[str] = list()
+        if images is None:
+            return {"ui": {"images": []}}
         num_images = len(images)
         # Calculate base suffix once before the loop to avoid re-scanning after each save
         base_suffix = ImageSaver.get_base_suffix(output_path, filename_prefix, extension, num_images)
